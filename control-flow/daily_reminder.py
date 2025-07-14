@@ -7,22 +7,31 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 match priority:
     case "high":
         if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a high priority task that requires immediate attention today!")
+            message = f"'{task}' is a high priority task that requires immediate attention today!"
         else:
-            print(f"\nReminder: '{task}' is a high priority task. Please address it soon.")
+            message = f"'{task}' is a high priority task."
     case "medium":
         if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a medium priority task that should be completed today.")
+            message = f"'{task}' is a medium priority task that requires immediate attention today!"
         else:
-            print(f"\nReminder: '{task}' is a medium priority task. Consider completing it this week.")
+            message = f"'{task}' is a medium priority task."
     case "low":
         if time_bound == "yes":
-            print(f"\nNote: '{task}' is a low priority task with a time constraint. Complete when possible.")
+            message = f"'{task}' is a low priority task that requires immediate attention today!"
         else:
-            print(f"\nNote: '{task}' is a low priority task. Consider completing it when you have free time.")
+            message = f"'{task}' is a low priority task."
     case _:
-        print("\nInvalid priority level entered. Please try again with high, medium, or low.")
+        message = "Invalid priority level entered. Please try again with high, medium, or low."
 
-# Success message
+# Print the standardized reminder format
+if priority in ["high", "medium", "low"] and time_bound in ["yes", "no"]:
+    if time_bound == "yes":
+        print(f"\nReminder: {message}")
+    else:
+        print(f"\nNote: {message}")
+else:
+    print(message)
+
+# Success message (keep this exactly as specified)
 print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
 print("\n🚀 Click here to tweet! 🚀")
