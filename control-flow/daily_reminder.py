@@ -1,28 +1,24 @@
-# Get user input for task details
+# daily_reminder.py
+
+# Prompt for a single task
 task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Process using match-case as required
+# Process the task based on priority and time sensitivity
 match priority:
     case "high":
-        if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a high priority task that requires immediate attention today!")
-        else:
-            print(f"\nReminder: '{task}' is a high priority task.")
+        priority_level = "high"
     case "medium":
-        if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a medium priority task that requires immediate attention today!")
-        else:
-            print(f"\nReminder: '{task}' is a medium priority task.")
+        priority_level = "medium"
     case "low":
-        if time_bound == "yes":
-            print(f"\nReminder: '{task}' is a low priority task that requires immediate attention today!")
-        else:
-            print(f"\nNote: '{task}' is a low priority task. Consider completing it when you have free time.")
+        priority_level = "low"
     case _:
-        print("\nInvalid priority level. Please enter high, medium, or low.")
+        print("Invalid priority level. Defaulting to low priority.")
+        priority_level = "low"
 
-# Required success message
-print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
-print("\n🚀 Click here to tweet! 🚀")
+# Provide a customized reminder
+if time_bound == "yes":
+    print(f"Reminder: '{task}' is a {priority_level} priority task that requires immediate attention today!")
+else:
+    print(f"Reminder: '{task}' is a {priority_level} priority task. Consider completing it when you have free time.")
