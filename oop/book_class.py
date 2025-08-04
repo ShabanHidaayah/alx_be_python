@@ -24,8 +24,8 @@ class Book:
 
         Returns:
             str: A string in the format "(title) by (author), published in (year)".
-        """
-return f"{self.title} by {self.author}, published in {self.year}"
+ """
+        return f"{self.title} by {self.author}, published in {self.year}"
 
     def __repr__(self):
         """
